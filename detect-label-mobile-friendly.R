@@ -26,7 +26,7 @@ detectMentionMF <- function(site,serp,mention) {
   attrs <- xpathApply(doc, "//span[@class='st']")
   mentions <- sapply(attrs, function(x) x[[1]])
   free(doc)
-  return(str_detect(xmlValue(mentions[[1]]), 'Site mobile'))
+  return(str_detect(xmlValue(mentions[[1]]), mention))
 }
 
 ###################################
