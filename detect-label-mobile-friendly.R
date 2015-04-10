@@ -6,6 +6,7 @@ library(dplyr)
 library(XML)
 library(R2HTML)
 library(stringr)
+library(ggplot2)
 
 # API PAGE INSIGHT
 key_api = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
@@ -44,7 +45,7 @@ getScoreMF <- function(site) {
 }
 
 #Analyse
-N <- 500
+N <- 400
 DF <- data.frame(num=rep(NA, N), 
                  site=rep("", N),  # as many cols as you need
                  pagespeed=rep("", N),
@@ -61,6 +62,8 @@ for (i in 1:length(linn)){
   # get score api pagespeed
   gSMF <- getScoreMF(site)
   DF[i, ] <- c(i,site,gSMF,dMMF)
+  
+  if (i>=N) break;
 }
 close(conn)
 
