@@ -62,7 +62,8 @@ for (i in 1:length(linn)){
   # get score api pagespeed
   gSMF <- getScoreMF(site)
   DF[i, ] <- c(i,site,gSMF,dMMF)
-  
+  print(i)
+  print(site)
   if (i>=N) break;
 }
 close(conn)
@@ -76,7 +77,7 @@ gg <- ggplot(DF2, aes(x=num, y=pagespeed, fill=mention)) +
   geom_bar(stat="identity") +
   facet_grid(~mention) +
   labs(x="Rank Alexa.org - @VincentTerrasi", y=expression("Score")) +
-  labs(title=expression("Répartition Mention Mobile Friendly sur le Top 500 Alexa en fonction du score d'ergonomie mobile")) +
+  labs(title=expression("Répartition Mention Mobile Friendly sur le Top 400 Alexa en fonction du score d'ergonomie mobile")) +
   theme(axis.text.x = element_text(angle = 90, hjust = 0, size = rel(0))) +
   geom_hline(yintercept = 20, colour="green", linetype = "longdash")
 
